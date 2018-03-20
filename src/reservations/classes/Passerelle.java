@@ -38,9 +38,9 @@ public class Passerelle {
 	/** Membres privés */
 	
 	// Adresse de l'hébergeur Internet
-	private static String _adresseHebergeur = "http://xxxxxxxxxxxxxxxx/m.m2l/services/";
+	//private static String _adresseHebergeur = "http://xxxxxxxxxxxxxxxx/m.m2l/services/";
 	// Adresse du localhost en cas d'exécution sur le poste de développement (projet de tests des classes)
-	//private static String _adresseHebergeur = "http://127.0.0.1/ws-php-xxxxxxx/m.m2l/services/";
+	private static String _adresseHebergeur = "http://localhost/ws-php-delaunay/m.m2l/services/";
 	
 	// Noms des services web déjà traités par la passerelle
 	private static String _urlConnecter = "Connecter.php";
