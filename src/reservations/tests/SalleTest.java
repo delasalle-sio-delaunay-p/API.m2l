@@ -43,9 +43,9 @@ public class SalleTest {
 
 	@Test
 	public void testGetAreaName() {
-		assertEquals("Test getAreaName", "Informatique - multimédia", uneSalle.getAreaName());
-		uneSalle.setAreaName("Salles de réception");
-		assertEquals("Test setAreaName", "Salles de réception", uneSalle.getAreaName());
+		assertEquals("Test getAreaName", "Informatique - multimédia", uneSalle.getArea_Name());
+		uneSalle.setArea_name("Salles de réception");
+		assertEquals("Test setAreaName", "Salles de réception", uneSalle.getArea_Name());
 	}
 
 }
