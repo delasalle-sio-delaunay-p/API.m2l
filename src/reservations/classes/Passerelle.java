@@ -210,65 +210,121 @@ public class Passerelle {
 		}
     }
     
-//    // Méthode de classe pour récupérer les salles (service ConsulterSalles.php)
-//    public static String consulterSalles(Utilisateur unUtilisateur)
-//    {
-//    	String reponse = "";
-//    	try
-//    	{	// préparation des paramètres à poster vers le service web
-//    		ArrayList<NameValuePair> parametresPostes = new ArrayList<NameValuePair>();
-//    		parametresPostes.add(new BasicNameValuePair("nom", unUtilisateur.getName()));
-//    		parametresPostes.add(new BasicNameValuePair("mdp", unUtilisateur.getPassword()));
-//    		
-//    		// création d'un nouveau document XML à partir de l'URL du service web et des paramètres
-//    		String urlDuServiceWeb = _adresseHebergeur + _urlConsulterSalles;
-//    		Document leDocument = getDocumentXML(urlDuServiceWeb, parametresPostes);
-//
-//    		// parsing du flux XML
-//    		Element racine = (Element) leDocument.getElementsByTagName("data").item(0);
-//
-//    		reponse = racine.getElementsByTagName("reponse").item(0).getTextContent();
-//    		
-//			NodeList listeNoeudsMembres = leDocument.getElementsByTagName("salle");
-//			/* Exemple de données obtenues pour une salle :
-//			    <salle>
-//			      <id>5</id>
-//			      <room_name>Multimédia</room_name >
-//			      <capacity>25</capacity >
-//			      <area_name>Informatique - multimédia</area_name >
-//			      <area_admin_email>chemin.lorette@lorraine-sport.net</area_admin_email >
-//			    </salle>
-//
-//			 */
-//			String formatUS = "yyyy-MM-dd HH:mm:ss";
-//			
-//			// parcours de la liste des noeuds <reservation> et ajout dans l'objet unUtilisateur
-//			for (int i = 0 ; i <= listeNoeudsMembres.getLength()-1 ; i++)
-//			{	// création de l'élement courant à chaque tour de boucle
-//				Element courant = (Element) listeNoeudsMembres.item(i);
-//				
-//				// lecture des balises intérieures
-//				int id = Integer.parseInt(courant.getElementsByTagName("id").item(0).getTextContent());
-//				String room_name = courant.getElementsByTagName("room_name").item(0).getTextContent();
-//				int capacity = Integer.parseInt(courant.getElementsByTagName("capacity").item(0).getTextContent());
-//	
-//				
-//				int status = Integer.parseInt(courant.getElementsByTagName("status").item(0).getTextContent());
-//				String digicode = courant.getElementsByTagName("digicode").item(0).getTextContent();
-//				
-//				// crée un objet Reservation
-//				Reservation uneReservation = new Reservation(id, timestamp, start_time, end_time, room_name, status, digicode);
-//				
-//				// ajoute la réservation à l'objet unUtilisateur
-//				unUtilisateur.ajouteReservation(uneReservation);
-//			}
-//
-//    		// retour de la réponse du service web
-//    		return reponse;
-//    	}
-//    	catch (Exception ex)
-//    	{	String msg = "Erreur : " + ex.getMessage();
-//			return msg;
-//		}
-//    }
+    // Méthode de classe pour récupérer les salles (service ConsulterSalles.php)
+    public static String consulterSalles(Utilisateur unUtilisateur)
+    {
+    	String reponse = "";
+    	try
+    	{	// préparation des paramètres à poster vers le service web
+    		ArrayList<NameValuePair> parametresPostes = new ArrayList<NameValuePair>();
+    		parametresPostes.add(new BasicNameValuePair("nom", unUtilisateur.getName()));
+    		parametresPostes.add(new BasicNameValuePair("mdp", unUtilisateur.getPassword()));
+    		
+    		// création d'un nouveau document XML à partir de l'URL du service web et des paramètres
+    		String urlDuServiceWeb = _adresseHebergeur + _urlConsulterSalles;
+    		Document leDocument = getDocumentXML(urlDuServiceWeb, parametresPostes);
+
+    		// parsing du flux XML
+    		Element racine = (Element) leDocument.getElementsByTagName("data").item(0);
+
+    		reponse = racine.getElementsByTagName("reponse").item(0).getTextContent();
+    		
+			NodeList listeNoeudsMembres = leDocument.getElementsByTagName("salle");
+			/* Exemple de données obtenues pour une salle :
+			    <salle>
+			      <id>5</id>
+			      <room_name>Multimédia</room_name >
+			      <capacity>25</capacity >
+			      <area_name>Informatique - multimédia</area_name >
+			      <area_admin_email>chemin.lorette@lorraine-sport.net</area_admin_email >
+			    </salle>
+
+			 */
+			String formatUS = "yyyy-MM-dd HH:mm:ss";
+			
+			// parcours de la liste des noeuds <salle>
+			for (int i = 0 ; i <= listeNoeudsMembres.getLength()-1 ; i++)
+			{	// création de l'élement courant à chaque tour de boucle
+				Element courant = (Element) listeNoeudsMembres.item(i);
+				
+				// lecture des balises intérieures
+				int id = Integer.parseInt(courant.getElementsByTagName("id").item(0).getTextContent());
+				String room_name = courant.getElementsByTagName("room_name").item(0).getTextContent();
+				int capacity = Integer.parseInt(courant.getElementsByTagName("capacity").item(0).getTextContent());
+				String area_name = courant.getElementsByTagName("area_name").item(0).getTextContent();
+				
+				// crée un objet Salle
+				Salle uneSalle = new Salle(id, room_name, capacity, area_name);
+				
+			}
+
+    		// retour de la réponse du service web
+    		return reponse;
+    	}
+    	catch (Exception ex)
+    	{	String msg = "Erreur : " + ex.getMessage();
+			return msg;
+		}
+    }
+    
+    // Méthode de classe pour confirmer une réservation (service ConfimerReservation.php)
+    public static String confirmerReservation(String nomUtilisateur, String mdpUtilisateur, String numReservation)
+    {
+    	String reponse = "";
+    	try
+    	{	// préparation des paramètres à poster vers le service web
+    		ArrayList<NameValuePair> parametresPostes = new ArrayList<NameValuePair>();
+    		parametresPostes.add(new BasicNameValuePair("nom", nomUtilisateur ));
+    		parametresPostes.add(new BasicNameValuePair("mdp", mdpUtilisateur ));
+    		parametresPostes.add(new BasicNameValuePair("numreservation", numReservation ));
+    		
+    		// création d'un nouveau document XML à partir de l'URL du service web et des paramètres
+    		String urlDuServiceWeb = _adresseHebergeur + _urlConfirmerReservation;
+    		Document leDocument = getDocumentXML(urlDuServiceWeb, parametresPostes);
+
+    		// parsing du flux XML
+    		Element racine = (Element) leDocument.getElementsByTagName("data").item(0);
+
+    		reponse = racine.getElementsByTagName("reponse").item(0).getTextContent();
+    		
+
+    		// retour de la réponse du service web
+    		return reponse;
+    	}
+    	catch (Exception ex)
+    	{	String msg = "Erreur : " + ex.getMessage();
+			return msg;
+		}    	
+    }
+    
+    // Méthode de classe pour changer de mot de passe (service ChangerDeMdp.php)
+    public static String changerDeMdp(String nomUtilisateur, String ancienMdp, String nouveauMdp, String confirmationMdp)
+    {
+    	String reponse = "";
+    	try
+    	{	// préparation des paramètres à poster vers le service web
+    		ArrayList<NameValuePair> parametresPostes = new ArrayList<NameValuePair>();
+    		parametresPostes.add(new BasicNameValuePair("nom", nomUtilisateur ));
+    		parametresPostes.add(new BasicNameValuePair("ancienMdp", ancienMdp ));
+    		parametresPostes.add(new BasicNameValuePair("nouveauMdp", nouveauMdp ));
+    		parametresPostes.add(new BasicNameValuePair("confirmationMdp", confirmationMdp ));
+    		
+    		// création d'un nouveau document XML à partir de l'URL du service web et des paramètres
+    		String urlDuServiceWeb = _adresseHebergeur + _urlChangerDeMdp;
+    		Document leDocument = getDocumentXML(urlDuServiceWeb, parametresPostes);
+
+    		// parsing du flux XML
+    		Element racine = (Element) leDocument.getElementsByTagName("data").item(0);
+
+    		reponse = racine.getElementsByTagName("reponse").item(0).getTextContent();
+    		
+    		// retour de la réponse du service web
+    		return reponse;
+    	}
+    	catch (Exception ex)
+    	{	String msg = "Erreur : " + ex.getMessage();
+			return msg;
+		}      	
+    	
+    }
 }

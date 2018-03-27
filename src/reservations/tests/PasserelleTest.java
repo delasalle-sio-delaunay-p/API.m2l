@@ -13,17 +13,17 @@ import reservations.classes.Utilisateur;
 
 public class PasserelleTest {
 
-	@Test
-	public void testConnecter() {
-		String msg = Passerelle.connecter("admin", "adminnnnnnnn");
-		assertEquals("Test Passerelle.connecter", "Erreur : authentification incorrecte.", msg);
-		
-		msg = Passerelle.connecter("admin", "admin");
-		assertEquals("Test Passerelle.connecter", "Administrateur authentifié.", msg);
-		
-		msg = Passerelle.connecter("giboired", "passe");
-		assertEquals("Test Passerelle.connecter", "Utilisateur authentifié.", msg);	
-	}
+//	@Test
+//	public void testConnecter() {
+//		String msg = Passerelle.connecter("admin", "adminnnnnnnn");
+//		assertEquals("Test Passerelle.connecter", "Erreur : authentification incorrecte.", msg);
+//		
+//		msg = Passerelle.connecter("admin", "admin");
+//		assertEquals("Test Passerelle.connecter", "Administrateur authentifié.", msg);
+//		
+//		msg = Passerelle.connecter("giboired", "passe");
+//		assertEquals("Test Passerelle.connecter", "Utilisateur authentifié.", msg);	
+//	}
 
 //	@Test
 //	public void testCreerUtilisateur() {
@@ -44,10 +44,10 @@ public class PasserelleTest {
 //		assertEquals("Test Passerelle.creerUtilisateur", "Erreur : nom d'utilisateur déjà existant.", msg);	
 //	}
 
-	private static String FormaterDateHeure(Date uneDate, String unFormat) {
-		SimpleDateFormat leFormat = new SimpleDateFormat(unFormat);
-		return leFormat.format(uneDate);
-	}
+//	private static String FormaterDateHeure(Date uneDate, String unFormat) {
+//		SimpleDateFormat leFormat = new SimpleDateFormat(unFormat);
+//		return leFormat.format(uneDate);
+//	}
 	
 //	@Test
 //	public void testConsulterReservations() {
@@ -77,4 +77,43 @@ public class PasserelleTest {
 //		assertEquals("2018-05-30 18:00:00", FormaterDateHeure(laReservation.getStartTime(), formatUS));
 //		assertEquals("2018-05-30 23:00:00", FormaterDateHeure(laReservation.getEndTime(), formatUS));
 //	}
+	
+//	@Test
+//	public void testConsulterSalles()
+//	{
+//		Utilisateur unUtilisateur = new Utilisateur(0, 0, "giboired", "passeeeeeeeeeee", "");
+//		String msg = Passerelle.consulterSalles(unUtilisateur);
+//		assertEquals("Erreur : authentification incorrecte.", msg);
+//		
+//		unUtilisateur = new Utilisateur(0, 0, "guilletm", "passe", "");
+//		msg = Passerelle.consulterSalles(unUtilisateur);
+//		assertEquals("Il y a 14 salles(s) de disponible en réservation.", msg);		
+//	}
+	
+//	@Test
+//	public void testConfirmerReservation()
+//	{
+//		// Vérification de l'auteur
+//		String msg = Passerelle.confirmerReservation("admin", "admin", "33");
+//		assertEquals("Erreur : vous n'êtes pas l'auteur de cette réservation.", msg);		
+//	
+//		// Vérification : la confirmation s'est bien passée
+//		msg = Passerelle.confirmerReservation("admin", "admin", "38");
+//		assertEquals("Enregistrement effectué : vous allez recevoir un mail de confirmation.", msg);		
+//		
+//		// Vérification : numéro de résevration inexistant
+//		msg = Passerelle.confirmerReservation("admin", "admin", "");
+//		assertEquals("Erreur : numéro de réservation inexistant.", msg);
+//		
+//		// Vérification : réservation déjà confirmée
+//		msg = Passerelle.confirmerReservation("admin", "admin", "38");
+//		assertEquals("Erreur : cette réservation est déjà confirmée.", msg);			
+//		
+//		// Vérification : réservation déjà passée
+//		msg = Passerelle.confirmerReservation("admin", "admin", "38");
+//		assertEquals("Erreur : cette réservation est déjà confirmée.", msg);		
+//			
+//	}
+			
+		
 }
