@@ -327,4 +327,120 @@ public class Passerelle {
 		}      	
     	
     }
+    
+    // Méthode de classe pour demander un nouveau mot de passe (service DemanderMdp.php)
+    public static String demanderMdp(String nomUtilisateur)
+    {
+    	String reponse = "";
+    	try
+    	{	// préparation des paramètres à poster vers le service web
+    		ArrayList<NameValuePair> parametresPostes = new ArrayList<NameValuePair>();
+    		parametresPostes.add(new BasicNameValuePair("nom", nomUtilisateur ));
+    		
+    		// création d'un nouveau document XML à partir de l'URL du service web et des paramètres
+    		String urlDuServiceWeb = _adresseHebergeur + _urlDemanderMdp;
+    		Document leDocument = getDocumentXML(urlDuServiceWeb, parametresPostes);
+
+    		// parsing du flux XML
+    		Element racine = (Element) leDocument.getElementsByTagName("data").item(0);
+
+    		reponse = racine.getElementsByTagName("reponse").item(0).getTextContent();
+    		
+    		// retour de la réponse du service web
+    		return reponse;
+    	}
+    	catch (Exception ex)
+    	{	String msg = "Erreur : " + ex.getMessage();
+			return msg;
+		}       	
+    }
+    
+    // Méthode de classe pour supprimer un utilisateur (service SupprimerUtilisateur.php)
+    public static String supprimerUtilisateur(String nomAdmin, String mdpAdmin, String name)
+    {
+    	String reponse = "";
+    	try
+    	{	// préparation des paramètres à poster vers le service web
+    		ArrayList<NameValuePair> parametresPostes = new ArrayList<NameValuePair>();
+    		parametresPostes.add(new BasicNameValuePair("nomAdmin", nomAdmin ));
+    		parametresPostes.add(new BasicNameValuePair("mdpAdmin", mdpAdmin ));
+    		parametresPostes.add(new BasicNameValuePair("name", name ));
+    		
+    		// création d'un nouveau document XML à partir de l'URL du service web et des paramètres
+    		String urlDuServiceWeb = _adresseHebergeur + _urlSupprimerUtilisateur;
+    		Document leDocument = getDocumentXML(urlDuServiceWeb, parametresPostes);
+
+    		// parsing du flux XML
+    		Element racine = (Element) leDocument.getElementsByTagName("data").item(0);
+
+    		reponse = racine.getElementsByTagName("reponse").item(0).getTextContent();
+    		
+    		// retour de la réponse du service web
+    		return reponse;
+    	}
+    	catch (Exception ex)
+    	{	String msg = "Erreur : " + ex.getMessage();
+			return msg;
+		}      	
+    	
+    }
+    
+    // Méthode de classe pour tester un digicode (service TesterDigicodeBatiment.php)
+    public static String testerDigicodeBatiment(String digicode)
+    {
+    	String reponse = "";
+    	try
+    	{	// préparation des paramètres à poster vers le service web
+    		ArrayList<NameValuePair> parametresPostes = new ArrayList<NameValuePair>();
+    		parametresPostes.add(new BasicNameValuePair("digicode", digicode ));
+
+    		
+    		// création d'un nouveau document XML à partir de l'URL du service web et des paramètres
+    		String urlDuServiceWeb = _adresseHebergeur + _urlTesterDigicodeBatiment;
+    		Document leDocument = getDocumentXML(urlDuServiceWeb, parametresPostes);
+
+    		// parsing du flux XML
+    		Element racine = (Element) leDocument.getElementsByTagName("data").item(0);
+
+    		reponse = racine.getElementsByTagName("reponse").item(0).getTextContent();
+    		
+    		// retour de la réponse du service web
+    		return reponse;
+    	}
+    	catch (Exception ex)
+    	{	String msg = "Erreur : " + ex.getMessage();
+			return msg;
+		}      	
+    	
+    }
+    
+    // Méthode de classe pour tester un digicode correspondant à une salle (service TesterDigicodeSalle.php)
+    public static String testerDigicodeSalle(String numSalle, String digicode)
+    {
+    	String reponse = "";
+    	try
+    	{	// préparation des paramètres à poster vers le service web
+    		ArrayList<NameValuePair> parametresPostes = new ArrayList<NameValuePair>();
+    		parametresPostes.add(new BasicNameValuePair("numSalle", numSalle ));
+    		parametresPostes.add(new BasicNameValuePair("digicode", digicode ));
+
+    		
+    		// création d'un nouveau document XML à partir de l'URL du service web et des paramètres
+    		String urlDuServiceWeb = _adresseHebergeur + _urlTesterDigicodeSalle;
+    		Document leDocument = getDocumentXML(urlDuServiceWeb, parametresPostes);
+
+    		// parsing du flux XML
+    		Element racine = (Element) leDocument.getElementsByTagName("data").item(0);
+
+    		reponse = racine.getElementsByTagName("reponse").item(0).getTextContent();
+    		
+    		// retour de la réponse du service web
+    		return reponse;
+    	}
+    	catch (Exception ex)
+    	{	String msg = "Erreur : " + ex.getMessage();
+			return msg;
+		}      	
+    	
+    }
 }
