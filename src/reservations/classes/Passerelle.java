@@ -40,7 +40,7 @@ public class Passerelle {
 	// Adresse de l'hébergeur Internet
 	//private static String _adresseHebergeur = "http://xxxxxxxxxxxxxxxx/m.m2l/services/";
 	// Adresse du localhost en cas d'exécution sur le poste de développement (projet de tests des classes)
-	private static String _adresseHebergeur = "http://localhost/ws-php-delaunay/m.m2l/services/";
+	private static String _adresseHebergeur = "http://localhost/ws-php-iradukunda/m.m2l/services/";
 	
 	// Noms des services web déjà traités par la passerelle
 	private static String _urlConnecter = "Connecter.php";
@@ -209,7 +209,33 @@ public class Passerelle {
 			return msg;
 		}
     }
-    
+        // Méthode de classe pour créer annuler la réservation (service AnnulerReservation.php)
+    public static String annulerReservation(String nomUtilisateur, String mdpUtilisateur, String numReservation)
+    {
+    	String reponse = "";
+    	try
+    	{	// préparation des paramètres à poster vers le service web
+    		ArrayList<NameValuePair> parametresPostes = new ArrayList<NameValuePair>();
+    		parametresPostes.add(new BasicNameValuePair("nom", nomUtilisateur));
+    		parametresPostes.add(new BasicNameValuePair("mdp", mdpUtilisateur));
+    		parametresPostes.add(new BasicNameValuePair("numreservation", numReservation));
+    		
+    		// création d'un nouveau document XML à partir de l'URL du service web et des paramètres
+    		String urlDuServiceWeb = _adresseHebergeur + _urlAnnulerReservation;
+    		Document leDocument = getDocumentXML(urlDuServiceWeb, parametresPostes);
+    		
+    		// parsing du flux XML
+    		Element racine = (Element) leDocument.getElementsByTagName("data").item(0);
+    		reponse = racine.getElementsByTagName("reponse").item(0).getTextContent();
+    		
+    		// retour de la réponse du service web
+    		return reponse;
+    	}
+    	catch (Exception ex)
+    	{	String msg = "Erreur : " + ex.getMessage();
+			return msg;
+		}
+    }
     // Méthode de classe pour récupérer les salles (service ConsulterSalles.php)
     public static String consulterSalles(Utilisateur unUtilisateur)
     {
