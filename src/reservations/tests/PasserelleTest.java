@@ -169,16 +169,16 @@ public class PasserelleTest {
 //		assertEquals("1", msg);	
 //	}
 	
-//	@Test
-//	public void testTesterDigicodeSalle()
-//	{
-//		// Vérification : digicode incorrect
-//		String msg = Passerelle.testerDigicodeSalle("35","123ABC");
-//		assertEquals("0", msg);		
-//		
-//		// Vérification : digicode correct
-//		msg = Passerelle.testerDigicodeSalle("5","18963A");
-//		assertEquals("1", msg);		
-//	}
+	@Test
+	public void testTesterDigicodeSalle()
+	{
+		// Vérification : digicode incorrect
+		String msg = Passerelle.testerDigicodeSalle("35","123ABC");
+		assertEquals("0", msg);		
+		
+		// Vérification : digicode correct
+		msg = Passerelle.testerDigicodeSalle("13","5670CA");
+		assertEquals("1", msg);		
+	}
 		
 }
