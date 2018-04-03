@@ -44,10 +44,10 @@ public class PasserelleTest {
 //		assertEquals("Test Passerelle.creerUtilisateur", "Erreur : nom d'utilisateur déjà existant.", msg);	
 //	}
 
-	private static String FormaterDateHeure(Date uneDate, String unFormat) {
-		SimpleDateFormat leFormat = new SimpleDateFormat(unFormat);
-		return leFormat.format(uneDate);
-	}
+//	private static String FormaterDateHeure(Date uneDate, String unFormat) {
+//		SimpleDateFormat leFormat = new SimpleDateFormat(unFormat);
+//		return leFormat.format(uneDate);
+//	}
 	
 //	@Test
 //	public void testConsulterReservations() {
@@ -94,4 +94,107 @@ public class PasserelleTest {
 		assertEquals("Enregistrement effectué : vous allez recevoir un mail de confirmation.", msg);
 		
 	}
+//	@Test
+//	public void testConsulterSalles()
+//	{
+//		Utilisateur unUtilisateur = new Utilisateur(0, 0, "giboired", "passeeeeeeeeeee", "");
+//		String msg = Passerelle.consulterSalles(unUtilisateur);
+//		assertEquals("Erreur : authentification incorrecte.", msg);
+//		
+//		unUtilisateur = new Utilisateur(0, 0, "guilletm", "passe", "");
+//		msg = Passerelle.consulterSalles(unUtilisateur);
+//		assertEquals("Il y a 14 salles(s) de disponible en réservation.", msg);		
+//	}
+	
+//	@Test
+//	public void testConfirmerReservation()
+//	{
+//		// Vérification de l'auteur
+//		String msg = Passerelle.confirmerReservation("admin", "admin", "33");
+//		assertEquals("Erreur : vous n'êtes pas l'auteur de cette réservation.", msg);		
+//	
+//		// Vérification : la confirmation s'est bien passée
+//		msg = Passerelle.confirmerReservation("admin", "admin", "38");
+//		assertEquals("Enregistrement effectué : vous allez recevoir un mail de confirmation.", msg);		
+//		
+//		// Vérification : numéro de résevration inexistant
+//		msg = Passerelle.confirmerReservation("admin", "admin", "");
+//		assertEquals("Erreur : numéro de réservation inexistant.", msg);
+//		
+//		// Vérification : réservation déjà confirmée
+//		msg = Passerelle.confirmerReservation("admin", "admin", "38");
+//		assertEquals("Erreur : cette réservation est déjà confirmée.", msg);			
+//		
+//		// Vérification : réservation déjà passée
+//		msg = Passerelle.confirmerReservation("admin", "admin", "38");
+//		assertEquals("Erreur : cette réservation est déjà confirmée.", msg);		
+//			
+//	}
+		
+//	@Test
+//	public void testChangerMdp()
+//	{
+//		
+//		
+//		
+//	}
+	
+//	@Test
+//	public void testDemanderMdp()
+//	{
+//		// Vérifications : nom incorrect
+//		String msg = Passerelle.demanderMdp("adminzzz");
+//		assertEquals("Erreur : nom d'utilisateur inexistant.", msg);
+//		
+//		// Vérification : nom valide
+//		msg = Passerelle.demanderMdp("giboired");
+//		assertEquals("Vous allez recevoir un mail avec votre nouveau mot de passe.", msg);		
+//		
+//	}
+	
+//	@Test
+//	public void testSupprimerUtilisateur()
+//	{
+//		// Vérification : authentification incorrecte
+//		String msg = Passerelle.supprimerUtilisateur("admin", "abcd", "giboired");
+//		assertEquals("Erreur : authentification incorrecte.", msg);
+//		
+//		// Vérification : nom d'utilisateur inexistant
+//		msg = Passerelle.supprimerUtilisateur("admin", "admin", "giboiredzzz");
+//		assertEquals("Erreur : nom d'utilisateur inexistant.", msg);
+//		
+//		// Vérification : utilisateur avec des réservation à venir
+//		msg = Passerelle.supprimerUtilisateur("admin", "admin", "giboired");
+//		assertEquals("Erreur : cet utilisateur a passé des réservations à venir.", msg);	
+//		
+//		// Vérification : suppression réussie avec envoi de mail
+//		 msg = Passerelle.supprimerUtilisateur("admin", "admin", "testuser2");
+//		assertEquals("Suppression  effectuée ; un mail va être envoyé à l'utilisateur.", msg);		
+//		
+//	}
+	
+//	@Test
+//	public void testTesterDigicodeBatiment()
+//	{
+//		// Vérification : digicode incorrect
+//		String msg = Passerelle.testerDigicodeBatiment("123ABC");
+//		assertEquals("0", msg);		
+//		
+//		// Vérification : digicode correct
+//		msg = Passerelle.testerDigicodeBatiment("D36711");
+//		assertEquals("1", msg);	
+//	}
+	
+//	@Test
+//	public void testTesterDigicodeSalle()
+//	{
+//		// Vérification : digicode incorrect
+//		String msg = Passerelle.testerDigicodeSalle("35","123ABC");
+//		assertEquals("0", msg);		
+//		
+//		// Vérification : digicode correct
+//		msg = Passerelle.testerDigicodeSalle("5","18963A");
+//		assertEquals("1", msg);		
+//	}
+		
 }
