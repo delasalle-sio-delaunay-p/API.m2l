@@ -1,8 +1,8 @@
-/**
+/***
  * Application de suivi des réservations de la Maison des Ligues de Lorraine
  * Thème : développement et test des classes Salle, Reservation, Utilisateur et Passerelle
- * Auteur : JM CARTRON
- * Dernière mise à jour : 8/11/2016
+ * @author JM CARTRON
+ * @version 1.0
  */
 package reservations.classes;
 
@@ -57,7 +57,13 @@ public class Passerelle {
 	private static String _urlTesterDigicodeBatiment = "TesterDigicodeBatiment.php";
 	private static String _urlTesterDigicodeSalle = "TesterDigicodeSalle.php";
 	
-	// fonction privée statique pour obtenir un document XML à partir de l'URL d'un service web
+	/***
+	 * Fonction privée statique pour obtenir un document XML à partir de l'URL d'un service web
+	 * @author JM CARTRON
+	 * @param urlDuServiceWeb
+	 * @param parametresPostes
+	 * @return document XML
+	 */
 	private static Document getDocumentXML(String urlDuServiceWeb, ArrayList<NameValuePair> parametresPostes)
 	{
     	try
@@ -90,7 +96,13 @@ public class Passerelle {
 		}	
 	}
 	
-    // Méthode de classe pour se connecter (service Connecter.php)
+	/***
+	 * Méthode de classe pour se connecter (service Connecter.php)
+	 * @author Leilla
+	 * @param nomUtilisateur
+	 * @param mdpUtilisateur
+	 * @return string
+	 */
     public static String connecter(String nomUtilisateur, String mdpUtilisateur)
     {
     	String reponse = "";
@@ -117,7 +129,14 @@ public class Passerelle {
 		}
     }
 
-    // Méthode de classe pour créer un utilisateur (service CreerUtilisateur.php)
+    /***
+     * Méthode de classe pour créer un utilisateur (service CreerUtilisateur.php)
+     * @author Pierre
+     * @param nomAdmin
+     * @param mdpAdmin
+     * @param unUtilisateur
+     * @return string
+     */
     public static String creerUtilisateur(String nomAdmin, String mdpAdmin, Utilisateur unUtilisateur)
     {
     	String reponse = "";
@@ -147,7 +166,12 @@ public class Passerelle {
 		}
     }
 
-    // Méthode de classe pour récupérer les réservations d'un utilisateur (service ConsulterReservations.php)
+    /***
+     * Méthode de classe pour récupérer les réservations d'un utilisateur (service ConsulterReservations.php)
+     * @author Pierre
+     * @param unUtilisateur
+     * @return string
+     */
     public static String consulterReservations(Utilisateur unUtilisateur)
     {
     	String reponse = "";
@@ -209,7 +233,15 @@ public class Passerelle {
 			return msg;
 		}
     }
-        // Méthode de classe pour créer annuler la réservation (service AnnulerReservation.php)
+    
+    /***
+     * Méthode de classe pour créer annuler la réservation (service AnnulerReservation.php)
+     * @author Leilla
+     * @param nomUtilisateur
+     * @param mdpUtilisateur
+     * @param numReservation
+     * @return
+     */
     public static String annulerReservation(String nomUtilisateur, String mdpUtilisateur, String numReservation)
     {
     	String reponse = "";
@@ -236,7 +268,13 @@ public class Passerelle {
 			return msg;
 		}
     }
-    // Méthode de classe pour récupérer les salles (service ConsulterSalles.php)
+
+    /***
+     * Méthode de classe pour récupérer les salles (service ConsulterSalles.php)
+     * @author Leilla
+     * @param unUtilisateur
+     * @return string
+     */
     public static String consulterSalles(Utilisateur unUtilisateur)
     {
     	String reponse = "";
@@ -293,7 +331,14 @@ public class Passerelle {
 		}
     }
     
-    // Méthode de classe pour confirmer une réservation (service ConfimerReservation.php)
+    /***
+     * Méthode de classe pour confirmer une réservation (service ConfimerReservation.php)
+     * @author Pierre
+     * @param nomUtilisateur
+     * @param mdpUtilisateur
+     * @param numReservation
+     * @return string
+     */
     public static String confirmerReservation(String nomUtilisateur, String mdpUtilisateur, String numReservation)
     {
     	String reponse = "";
@@ -323,7 +368,15 @@ public class Passerelle {
 		}    	
     }
     
-    // Méthode de classe pour changer de mot de passe (service ChangerDeMdp.php)
+    /***
+     * Méthode de classe pour changer de mot de passe (service ChangerDeMdp.php)
+     * @author Pierre
+     * @param nomUtilisateur
+     * @param ancienMdp
+     * @param nouveauMdp
+     * @param confirmationMdp
+     * @return string
+     */
     public static String changerDeMdp(String nomUtilisateur, String ancienMdp, String nouveauMdp, String confirmationMdp)
     {
     	String reponse = "";
@@ -354,7 +407,12 @@ public class Passerelle {
     	
     }
     
-    // Méthode de classe pour demander un nouveau mot de passe (service DemanderMdp.php)
+    /***
+     * Méthode de classe pour demander un nouveau mot de passe (service DemanderMdp.php)
+     * @author Pierre
+     * @param nomUtilisateur
+     * @return string
+     */
     public static String demanderMdp(String nomUtilisateur)
     {
     	String reponse = "";
@@ -381,7 +439,14 @@ public class Passerelle {
 		}       	
     }
     
-    // Méthode de classe pour supprimer un utilisateur (service SupprimerUtilisateur.php)
+    /***
+     * Méthode de classe pour supprimer un utilisateur (service SupprimerUtilisateur.php)
+     * @author Pierre
+     * @param nomAdmin
+     * @param mdpAdmin
+     * @param name
+     * @return string
+     */
     public static String supprimerUtilisateur(String nomAdmin, String mdpAdmin, String name)
     {
     	String reponse = "";
@@ -411,7 +476,12 @@ public class Passerelle {
     	
     }
     
-    // Méthode de classe pour tester un digicode (service TesterDigicodeBatiment.php)
+    /***
+     * Méthode de classe pour tester un digicode (service TesterDigicodeBatiment.php)
+     * @author Pierre
+     * @param digicode
+     * @return string
+     */
     public static String testerDigicodeBatiment(String digicode)
     {
     	String reponse = "";
@@ -440,7 +510,13 @@ public class Passerelle {
     	
     }
     
-    // Méthode de classe pour tester un digicode correspondant à une salle (service TesterDigicodeSalle.php)
+    /***
+     * Méthode de classe pour tester un digicode correspondant à une salle (service TesterDigicodeSalle.php)
+     * @author Pierre
+     * @param numSalle
+     * @param digicode
+     * @return string
+     */
     public static String testerDigicodeSalle(String numSalle, String digicode)
     {
     	String reponse = "";

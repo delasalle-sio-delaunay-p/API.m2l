@@ -1,3 +1,9 @@
+/***
+ * Application de suivi des réservations de la Maison des Ligues de Lorraine
+ * Thème : développement et test des classes Salle, Reservation, Utilisateur et Passerelle
+ * @author Pierre
+ * @version 1.0
+ */
 package reservations.tests;
 
 import static org.junit.Assert.*;

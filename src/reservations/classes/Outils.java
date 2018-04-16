@@ -1,7 +1,9 @@
-// TP Java
-// Classe offrant différents services courants sous forme de méthodes à portée classe
-// Auteur : JM CARTRON
-// Dernière mise à jour : 10/9/2013
+/***
+ * Application de suivi des réservations de la Maison des Ligues de Lorraine
+ * Thème : développement et test des classes Salle, Reservation, Utilisateur et Passerelle
+ * @author JM CARTRON
+ * @version 1.0
+ */
 
 package reservations.classes;
 

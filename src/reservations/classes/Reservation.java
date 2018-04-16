@@ -1,8 +1,8 @@
-/**
+/***
  * Application de suivi des réservations de la Maison des Ligues de Lorraine
  * Thème : développement et test des classes Salle, Reservation, Utilisateur et Passerelle
- * Auteur : JM CARTRON
- * Dernière mise à jour : 7/11/2016
+ * @author JM CARTRON
+ * @version 1.0
  */
 
 package reservations.classes;
