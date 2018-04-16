@@ -240,7 +240,7 @@ public class Passerelle {
      * @param nomUtilisateur
      * @param mdpUtilisateur
      * @param numReservation
-     * @return
+     * @return string
      */
     public static String annulerReservation(String nomUtilisateur, String mdpUtilisateur, String numReservation)
     {
